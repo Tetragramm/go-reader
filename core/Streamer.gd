@@ -275,6 +275,13 @@ func tex_thread_load(arr): #value 0 = index
 	
 	if err != OK:
 		print("Error loading thumb- "+ str(err))
+		image.create(100,100,false,Image.FORMAT_RGB8)
+		image.fill(Color(0,0,0))
+		image.lock()
+		for x in range(100):
+			image.set_pixel(x,x,Color(255,0,0))
+			image.set_pixel(x,99-x,Color(255,0,0))
+		image.unlock()
 	
 	var image_w = image.get_width()
 	var image_h = image.get_height()
